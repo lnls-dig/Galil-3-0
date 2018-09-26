@@ -4580,8 +4580,9 @@ void GalilController::getStatus(void)
 			setDoubleParam(addr, GalilAnalogIn_, paramDouble);
 			analogInPosted_[addr] = paramDouble;
 			}
-		if (rio_)
-			{
+        // Comment this IF so analog output RB is updated for DMC30017
+	//	if (rio_)
+	//		{
 			//Analog output readbacks for rio
 			strcpy(src, "@AO[x]");
 			src[4] = addr + 48;
@@ -4591,7 +4592,7 @@ void GalilController::getStatus(void)
 				setDoubleParam(addr, GalilAnalogOutRBV_, paramDouble);
 				analogOutRbvPosted_[addr] = paramDouble;
 				}
-			}
+	//		}
 		}
 
 	//Process unsolicited mesgs from controller
